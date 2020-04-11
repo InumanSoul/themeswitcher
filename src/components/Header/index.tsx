@@ -49,21 +49,22 @@ function MenuLogin() {
     );
 };
 
-function UserMenu(){
+function UserMenu(props: any){
     return(
         <>
-            <Link to="/dashboard" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>User name</Link>
+            <Link to="/dashboard" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>{props.name}</Link>
         </>
     );
 };
 
 function Menu(){
-    // const token = JSON.parse(localStorage.getItem('app_token') || "{}");
+    const token = localStorage.getItem('app_token');
+    const user = JSON.parse(localStorage.getItem('user') || "{}");
 
-    // if(token){
-    //     return <MenuLogin />;
-    // }
-    return <UserMenu />;
+    if(token !== null){
+        return <UserMenu name={user.name}/>;
+    }
+    return <MenuLogin />;
 }
 
 export default Header;
