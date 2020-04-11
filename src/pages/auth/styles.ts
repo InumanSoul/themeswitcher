@@ -23,18 +23,21 @@ export const InputLabel = styled.label`
 
 export const LoginCard = styled.div`
   padding: 1.2rem;
-  margin-top: 90px;
-  width: 240px;
+  width: 300px;
   border-radius: .25rem;
   background-color: ${props => props.theme.colors.cardbg};
   border: 1px solid ${props => props.theme.colors.borderColor};
+
+  h3{
+    margin-bottom: 1.2rem;
+  }
 `;
 
 export const Container = styled.div`
-  width: 100%;
   display: flex;
-  align-items: center;
+  height: calc(100vh - 60px);
   justify-content: center;
+  align-items: center;
 `;
 
 export const Button = styled.button`

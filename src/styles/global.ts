@@ -14,6 +14,10 @@ export default createGlobalStyle`
         font-family: sans-serif;
     }
 
+    h1{
+        font-size: 2.2rem;
+    }
+
     h2{
         font-size: 2rem;
     }
@@ -23,6 +27,14 @@ export default createGlobalStyle`
     }
 
     a{
+        color: ${(props) => props.theme.colors.primary};
+    }
+
+    .mt4{
+        margin-top: 1.2rem;
+    }
+
+    .text-primary {
         color: ${(props) => props.theme.colors.primary};
     }
 `;
