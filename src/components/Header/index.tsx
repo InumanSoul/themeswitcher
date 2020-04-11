@@ -51,9 +51,7 @@ function MenuLogin() {
 
 function UserMenu(props: any){
     return(
-        <>
-            <Link to="/dashboard" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>{props.name}</Link>
-        </>
+        <Link to="/dashboard" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>{props.name}</Link>
     );
 };
 

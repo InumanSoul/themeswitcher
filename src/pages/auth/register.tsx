@@ -42,17 +42,12 @@ const Register = () => {
       axios
         .post("http://127.0.0.1:8000/api/register", formData)
         .then((res) => {
-          console.log(res.data);
-          // localStorage.setItem("app_token", res.data.success.token);
-          // localStorage.setItem("user", JSON.stringify(res.data.user));
-
-          // history.push("/dashboard");
+          history.push("/login");
+          console.log(res);
         })
         .catch((error) => {
           console.log(error);
         });
-
-      // console.log('Login successfully');
 
     } else {
 
