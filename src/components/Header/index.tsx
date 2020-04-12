@@ -19,6 +19,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
                 <b>Simple Login</b>
                 <div>
                     <Link to="/" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>Inicio</Link>
+                    <Link to="/sucursales" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>Sucursales</Link>
                 </div>
             </Brand>
             <div>
