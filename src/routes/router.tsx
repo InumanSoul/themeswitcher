@@ -8,6 +8,7 @@ import Login from "../pages/auth/login";
 import Register from "../pages/auth/register";
 import Dashboard from "../pages/dashboard";
 import Sucursales from "../pages/sucursales";
+import SucursalesDetail from "../pages/sucursales/details";
 
 const Routes = (
   <Router>
@@ -15,7 +16,8 @@ const Routes = (
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/dashboard" component={Dashboard} />
-    <Route path="/sucursales" component={Sucursales} />
+    <Route exact path="/sucursales" component={Sucursales} />
+    <Route path="/sucursales/show/:id" component={SucursalesDetail} />
   </Router>
 );
 
