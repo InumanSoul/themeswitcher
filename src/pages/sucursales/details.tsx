@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import usePersistedState from "../../utils/usePersistedState";
 import Middleware from "../../components/Middleware/auth";
@@ -11,12 +12,40 @@ import GlobablStyle from "../../styles/global";
 import Header from "../../components/Header";
 import { Container } from "./styles";
 
-function SucursalesDetail() {
+interface JsonObject {
+  data: any;
+}
+
+function SucursalesDetail(props: any) {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
   };
-//   const sucursalData = this.props;
+
+  const sucId = props.match.params;
+  const [apidata, setApidata] = useState<JsonObject>({ data: [] });
+  const [isLoading, setIsLoading] = useState(false);
+
+  //Get token from local and configure headers
+  const token = localStorage.getItem("app_token");
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + token,
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      const result = await axios.get("http://127.0.0.1:8000/api/sucursales/"+sucId.id, {
+        headers: headers,
+      });
+      const formatResult = { data: result.data };
+      setApidata(formatResult);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -24,24 +53,15 @@ function SucursalesDetail() {
       <Middleware />
       <Header toggleTheme={toggleTheme} />
       <Container>
-        <h2>Sucursal detalle</h2>
-        <p>Estas son tus sucursales</p>
-
         <div>
-          {/* {isLoading ? (
+          {isLoading ? (
             <div>Loading...</div>
           ) : (
-            <>
-              {apidata.data.map((item) => {
-                return (
-                  <div key={item.id} className="mt4">
-                    <h4>{item.nombre}</h4>
-                    <p>{item.direccion}</p>
-                  </div>
-                );
-              })}
-            </>
-          )} */}
+            <div className="mt4">
+              <h2>{apidata.data.nombre}</h2>
+              <p>{apidata.data.direccion}</p>
+            </div>
+          )}
         </div>
       </Container>
     </ThemeProvider>

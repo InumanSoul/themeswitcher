@@ -16,13 +16,12 @@ interface JsonObject {
   data: Array<any>;
 }
 
-
 function Sucursales() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
   };
-  const [apidata, setApidata] = useState<JsonObject>({ data: []});
+  const [apidata, setApidata] = useState<JsonObject>({ data: [] });
   const [isLoading, setIsLoading] = useState(false);
 
     //Get token from local and configure headers
