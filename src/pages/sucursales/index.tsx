@@ -8,9 +8,8 @@ import Middleware from "../../components/Middleware/auth";
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 
-import GlobablStyle from "../../styles/global";
-import Header from "../../components/Header";
-import { Container } from "./styles";
+import GlobablStyle, { Container } from "../../styles/global";
+import Sidemenu from "../../components/Sidemenu";
 
 interface JsonObject {
   data: Array<any>;
@@ -51,28 +50,32 @@ function Sucursales() {
     <ThemeProvider theme={theme}>
       <GlobablStyle />
       <Middleware />
-      <Header toggleTheme={toggleTheme} />
-      <Container>
-        <h2>Sucursales</h2>
-        <p>Estas son tus sucursales</p>
+      <div className="wrapper">
+        <Sidemenu toggleTheme={toggleTheme} />
+        <div className="content">
+          <Container>
+            <h2>Sucursales</h2>
+            <p>Estas son tus sucursales</p>
 
-        <div>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            <>
-              {apidata.data.map((item) => {
-                return (
-                  <Link to={`/sucursales/show/${item.id}`} key={item.id} className="mt4">
-                    <h4>{item.nombre}</h4>
-                    <p>{item.direccion}</p>
-                  </Link>
-                );
-              })}
-            </>
-          )}
+            <div>
+              {isLoading ? (
+                <div>Loading...</div>
+              ) : (
+                <>
+                  {apidata.data.map((item) => {
+                    return (
+                      <Link to={`/sucursales/show/${item.id}`} key={item.id} className="d-block mt4 text-decoration-none">
+                        <h4>{item.nombre}</h4>
+                        <p>{item.direccion}</p>
+                      </Link>
+                    );
+                  })}
+                </>
+              )}
+            </div>
+          </Container>
         </div>
-      </Container>
+      </div>
     </ThemeProvider>
   );
 }

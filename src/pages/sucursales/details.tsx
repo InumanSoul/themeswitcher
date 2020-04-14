@@ -8,9 +8,8 @@ import Middleware from "../../components/Middleware/auth";
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 
-import GlobablStyle from "../../styles/global";
-import Header from "../../components/Header";
-import { Container } from "./styles";
+import GlobablStyle, { Container } from "../../styles/global";
+import Sidemenu from "../../components/Sidemenu";
 
 interface JsonObject {
   data: any;
@@ -51,20 +50,25 @@ function SucursalesDetail(props: any) {
     <ThemeProvider theme={theme}>
       <GlobablStyle />
       <Middleware />
-      <Header toggleTheme={toggleTheme} />
-      <Container>
-        <div>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            <div className="mt4">
-              <h2>{apidata.data.nombre}</h2>
-              <p>{apidata.data.direccion}</p>
+      <div className="wrapper">
+        <Sidemenu toggleTheme={toggleTheme} />
+        <div className="content">
+          <Container>
+            <div>
+              {isLoading ? (
+                <div>Loading...</div>
+              ) : (
+                  <div className="mt4">
+                    <h2>{apidata.data.nombre}</h2>
+                    <p>{apidata.data.direccion}</p>
+                  </div>
+                )}
             </div>
-          )}
+          </Container>
         </div>
-      </Container>
+      </div>
     </ThemeProvider>
+
   );
 }
 export default SucursalesDetail;
