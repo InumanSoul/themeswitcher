@@ -16,11 +16,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
     return(
         <Container>
             <Brand>
-                <b>Simple Login</b>
-                <div>
-                    <Link to="/" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>Inicio</Link>
-                    <Link to="/sucursales" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>Sucursales</Link>
-                </div>
+                <b>Printit</b>
             </Brand>
             <div>
                 <Switch 
