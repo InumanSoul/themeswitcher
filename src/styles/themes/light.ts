@@ -2,12 +2,14 @@ export default {
 	title: 'light',
 
 	colors: {
-		primary: '#2A55D9',
-		secondary: '#977EF2',
+		primary: '#F23B55',
+		secondary: '#484793',
 
-		background: '#f5f5f5',
-		text: '#333',
-		cardbg: '#ffffff',
-		borderColor: '#ebebeb'
+		sidemenu: '#FCFCFC',
+
+		background: '#F5F6FA',
+		text: '#151722',
+		cardbg: '#FFFFFF',
+		borderColor: '#EBEBEB'
 	},
 };

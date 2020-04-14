@@ -8,6 +8,8 @@ declare module 'styled-components' {
         primary: string;
         secondary: string;
 
+        sidemenu: string;
+
         background: string;
         text: string;
         cardbg: string;

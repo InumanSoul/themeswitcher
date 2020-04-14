@@ -7,9 +7,9 @@ import usePersistedState from "../../utils/usePersistedState";
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 // GlobalStyle and header
-import GlobablStyle from "../../styles/global";
+import GlobablStyle, { Button, FormGroup } from "../../styles/global";
 import Header from "../../components/Header";
-import { Container, InputLabel, CustomInput, Button, LoginCard, FormGroup } from "./styles";
+import { Container, InputLabel, CustomInput, LoginCard } from "./styles";
 
 const Register = () => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
