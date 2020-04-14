@@ -8,11 +8,10 @@ import Middleware from '../../components/Middleware/auth';
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 
-import GlobablStyle from "../../styles/global";
-import Header from "../../components/Header";
-import { Container, Button } from "./styles";
+import GlobablStyle, { Button, Container } from "../../styles/global";
+import Sidemenu from "../../components/Sidemenu";
 
-function Dashboard() {
+function Account() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
@@ -46,15 +45,19 @@ function Dashboard() {
   return (
     <ThemeProvider theme={theme}>
       <GlobablStyle />
-    <Middleware />
-      <Header toggleTheme={toggleTheme} />
-      <Container>
-        <h2>Hola {user.name}!</h2>
-        <p>Lorem ipsum dolor sit ammet consecteur</p>
-        <Button onClick={e => {e.preventDefault(); handleLoggout()}}>Loggout</Button>
-      </Container>
+      <Middleware />
+      <div className="wrapper">
+        <Sidemenu toggleTheme={toggleTheme} />
+        <div className="content">
+          <Container>
+            <h2>Hola {user.name}!</h2>
+            <p>Lorem ipsum dolor sit ammet consecteur</p>
+            <Button onClick={e => { e.preventDefault(); handleLoggout() }} className="mt4">Loggout</Button>
+          </Container>
+        </div>
+      </div>
     </ThemeProvider>
   );
 }
 
-export default Dashboard;
+export default Account;
