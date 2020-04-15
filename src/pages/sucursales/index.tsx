@@ -25,9 +25,12 @@ function Sucursales() {
 
     //Get token from local and configure headers
   const token = localStorage.getItem("app_token");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
   const headers = {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + token,
+    "Authorization": "Bearer " + token,
+    "Empresa": user.empresa_id,
   };
 
   useEffect(() => {
@@ -64,7 +67,7 @@ function Sucursales() {
                 <>
                   {apidata.data.map((item) => {
                     return (
-                      <Link to={`/sucursales/show/${item.id}`} key={item.id} className="d-block mt4 text-decoration-none">
+                      <Link to={`/sucursales/show/${item.id}`} key={item.id} className="d-block mt4 text-decoration-none text-reset bg-light shadow p4 rounded">
                         <h4>{item.nombre}</h4>
                         <p>{item.direccion}</p>
                       </Link>
