@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useHistory, Link } from "react-router-dom";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import usePersistedState from "../../utils/usePersistedState";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/pro-regular-svg-icons";
 // Themes
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
@@ -22,6 +24,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isButtonDisabled, setIsBbuttonDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -34,6 +37,7 @@ const Register = () => {
 
   const handleLogin = () => {
     const formData = new FormData();
+    setIsLoading(true);
     formData.append('name', username);
     formData.append('email', email);
     formData.append('password', password);
@@ -47,11 +51,9 @@ const Register = () => {
         })
         .catch((error) => {
           console.log(error);
+          window.alert("No se pudo crear el usuario, intente nuevamente");
+          setIsLoading(false);
         });
-
-    } else {
-
-      console.log("Fill the fucking credentials");
     }
   };
 
@@ -99,16 +101,18 @@ const Register = () => {
                 onKeyPress={(e) => handleKeyPress(e)}
               />
             </FormGroup>
-            <Button onClick={e => {e.preventDefault(); handleLogin()}} disabled={isButtonDisabled} className="btn-block">
-              Crear cuenta
+            <Button 
+              onClick={e => {e.preventDefault(); handleLogin()}}
+              disabled={isButtonDisabled} 
+              className="btn-block"
+            >
+              {isLoading ? (<FontAwesomeIcon icon={faCircleNotch} spin={true}/>) : "Crear cuenta"}
             </Button>
           </form>
           <div className="mv4">
             ¿Tenés cuenta? <Link to="/login">Inicia sesión</Link>
           </div>
-          <div>
-            <small className="text-muted">Al hacer click en Crear cuenta, aceptas los Términos y condiciones y la Política de Printit.</small>
-          </div>
+          <small className="text-muted">Al hacer click en Crear cuenta, aceptas los Términos y condiciones y la Política de Printit.</small>
         </LoginCard>
       </Container>
     </ThemeProvider>

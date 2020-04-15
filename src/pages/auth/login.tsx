@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useHistory, Link } from "react-router-dom";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import usePersistedState from "../../utils/usePersistedState";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/pro-regular-svg-icons";
 // Themes
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
@@ -77,6 +79,7 @@ const Login = () => {
               <Input
                 id="email"
                 type="email"
+                placeholder="Ingrese su email"
                 onChange={(e) => setUsername(e.target.value)}
                 onKeyPress={(e) => handleKeyPress(e)}
               />
@@ -86,20 +89,26 @@ const Login = () => {
               <Input
                 id="password"
                 type="password"
+                placeholder="Ingrese su contraseña"
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyPress={(e) => handleKeyPress(e)}
               />
             </FormGroup>
-            <Button onClick={e => {e.preventDefault(); handleLogin()}} disabled={isButtonDisabled} className="btn-block">
-              {isLoading ? ('Loading...'): ('Iniciar sesión')}
+            <Button
+              onClick={(e) => {e.preventDefault(); handleLogin();}}
+              disabled={isButtonDisabled}
+              className="btn-block"
+            >
+              {isLoading ? (<FontAwesomeIcon icon={faCircleNotch} spin={true}/>) : "Iniciar sesión"}
             </Button>
           </form>
           <div className="mv4">
             ¿No tenés cuenta? <Link to="/register">Registrate</Link>
           </div>
-          <div>
-            <small className="text-muted">Al hacer click en Iniciar Sesión, aceptas los Términos y condiciones y la Política de Printit.</small>
-          </div>
+          <small className="text-muted">
+            Al hacer click en Iniciar Sesión, aceptas los Términos y condiciones
+            y la Política de Printit.
+          </small>
         </LoginCard>
       </Container>
     </ThemeProvider>
