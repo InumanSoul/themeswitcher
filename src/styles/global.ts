@@ -87,6 +87,9 @@ export default createGlobalStyle`
     }
 
     /* Helpers */
+    .bg-light {
+        background: ${(props) => props.theme.colors.cardbg};
+    }
 
     .bg-primary {
         background: ${(props) => props.theme.colors.primary};;
@@ -94,6 +97,10 @@ export default createGlobalStyle`
 
     .d-block {
         display: block;
+    }
+
+    .p4{
+        padding: 1.2rem;
     }
 
     .mt4{
@@ -140,6 +147,14 @@ export default createGlobalStyle`
 
     .btn-block{
         width: 100%;
+    }
+
+    .shadow{
+        box-shadow: 0 5px 10px ${(props) => props.theme.colors.shadows};
+    }
+
+    .rounded {
+        border-radius: .45rem;
     }
 `;
 
