@@ -10,6 +10,7 @@ export default {
 		background: '#F5F6FA',
 		text: '#151722',
 		cardbg: '#FFFFFF',
-		borderColor: '#EBEBEB'
+		borderColor: '#EBEBEB',
+		shadows: '#CCCCCC'
 	},
 };

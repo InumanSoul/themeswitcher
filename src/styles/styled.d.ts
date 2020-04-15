@@ -14,6 +14,7 @@ declare module 'styled-components' {
         text: string;
         cardbg: string;
         borderColor: string;
+        shadows: string;
       };
     }
 }

@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components';
 import { shade } from 'polished';
 import { Link } from 'react-router-dom';
 
-import { Container, Brand } from './styles';
+import { Container } from './styles';
 
 interface Props {
     toggleTheme(): void;
@@ -15,23 +15,20 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
 
     return(
         <Container>
-            <Brand>
-                <b>Printit</b>
-            </Brand>
-            <div>
-                <Switch 
-                    onChange={toggleTheme}
-                    checked={title === 'dark'}
-                    checkedIcon={false}
-                    uncheckedIcon={false}
-                    height={10}
-                    width={35}
-                    handleDiameter={20}
-                    offColor={shade(0.2, colors.primary)}
-                    onColor={colors.secondary}
-                />
-                <Menu />
-            </div>
+            <img className="brand-md" src="https://printit.com.py/img/vendor/logo.svg" alt="Printit" />
+            <Switch 
+                onChange={toggleTheme}
+                checked={title === 'dark'}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                height={10}
+                width={35}
+                handleDiameter={20}
+                offHandleColor={'#FFFFFF'}
+                offColor={shade(0.1, colors.secondary )}
+                onColor={colors.primary}
+            />
+            <Menu />
 
         </Container>
     );
@@ -39,16 +36,16 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
 
 function MenuLogin() {
     return(
-        <>
-            <Link to="/login" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>Login</Link>
-            <Link to="/register" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>Register</Link>
-        </>
+        <div>
+            <Link to="/login" className="text-decoration-none text-reset">Iniciar Sesión</Link>
+            <Link to="/register" className="text-decoration-none text-reset ml3">Registrarse</Link>
+        </div>
     );
 };
 
 function UserMenu(props: any){
     return(
-        <Link to="/dashboard" style={{ color: '#fff', marginLeft: 15, textDecoration: 'none', }}>{props.name}</Link>
+        <Link to="/sucursales" className="text-decoration-none text-reset ml3">{props.name}</Link>
     );
 };
 

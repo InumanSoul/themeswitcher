@@ -70,6 +70,11 @@ export default createGlobalStyle`
         margin-bottom: 20px;
     }
 
+    .brand-md {
+        width: auto;
+        height: 35px;
+    }
+
     .switch-empresa{
         position: fixed;
         bottom: 0;
@@ -82,6 +87,10 @@ export default createGlobalStyle`
     }
 
     /* Helpers */
+
+    .bg-primary {
+        background: ${(props) => props.theme.colors.primary};;
+    }
 
     .d-block {
         display: block;
@@ -100,16 +109,37 @@ export default createGlobalStyle`
         margin-bottom: 1.2rem;
     }
 
+    .ml3{
+        margin-left: 1rem;
+    }
+
     .text-primary {
         color: ${(props) => props.theme.colors.primary};
+    }
+
+    .text-muted {
+        color: ${(props) => props.theme.colors.text};
+        opacity: 0.5;
+    }
+
+    .text-center {
+        text-align: center;
     }
     
     .text-bold {
         font-weight: 600;
     }
 
+    .text-reset{
+        color: inherit!important;
+    }
+
     .text-decoration-none {
         text-decoration: none !important;
+    }
+
+    .btn-block{
+        width: 100%;
     }
 `;
 
@@ -137,4 +167,28 @@ export const Container = styled.div`
   padding: 40px 15px;
   margin-left: auto;
   margin-right: auto;
+`;
+
+export const Input = styled.input`
+  border: 1px solid ${props => props.theme.colors.borderColor};
+  padding: 0.375rem .75rem;
+  border-radius: .25rem;
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
+  font-size: 1rem;
+
+  :active, :focus {
+    outline: 0;
+    border: 1px solid ${props => props.theme.colors.primary};
+  }
+`;
+
+export const Label = styled.label`
+  margin-bottom: .375rem;
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
 `;

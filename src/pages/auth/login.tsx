@@ -7,9 +7,9 @@ import usePersistedState from "../../utils/usePersistedState";
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 // GlobalStyle and header
-import GlobablStyle, { Button, FormGroup } from "../../styles/global";
+import GlobablStyle, { Button, FormGroup, Label, Input } from "../../styles/global";
 import Header from "../../components/Header";
-import { Container, InputLabel, CustomInput, LoginCard } from "./styles";
+import { Container, LoginCard } from "./styles";
 
 const Login = () => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
@@ -21,6 +21,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isButtonDisabled, setIsBbuttonDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -33,28 +34,24 @@ const Login = () => {
 
   const handleLogin = () => {
     const formData = new FormData();
+    setIsLoading(true);
     formData.append('email', username);
     formData.append('password', password);
+    
     
     if (username !== null && password !== null) {
       axios
         .post("http://127.0.0.1:8000/api/login", formData)
         .then((res) => {
-          // console.log(res.data);
           localStorage.setItem("app_token", res.data.success.token);
           localStorage.setItem("user", JSON.stringify(res.data.user));
-
-          history.push("/dashboard");
+          history.push("/sucursales");
         })
         .catch((error) => {
           console.log(error);
+          window.alert('Usuario y/o contraseña no valido');
+          setIsLoading(false);
         });
-
-      // console.log('Login successfully');
-
-    } else {
-
-      console.log("Fill the fucking credentials");
     }
   };
 
@@ -76,8 +73,8 @@ const Login = () => {
           </div>
           <form className="mb4">
             <FormGroup>
-              <InputLabel htmlFor="email">Email</InputLabel>
-              <CustomInput
+              <Label htmlFor="email">Email</Label>
+              <Input
                 id="email"
                 type="email"
                 onChange={(e) => setUsername(e.target.value)}
@@ -85,23 +82,23 @@ const Login = () => {
               />
             </FormGroup>
             <FormGroup>
-              <InputLabel htmlFor="password">Contraseña</InputLabel>
-              <CustomInput
+              <Label htmlFor="password">Contraseña</Label>
+              <Input
                 id="password"
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyPress={(e) => handleKeyPress(e)}
               />
             </FormGroup>
-            <Button onClick={e => {e.preventDefault(); handleLogin()}} disabled={isButtonDisabled}>
-              Iniciar sesión
+            <Button onClick={e => {e.preventDefault(); handleLogin()}} disabled={isButtonDisabled} className="btn-block">
+              {isLoading ? ('Loading...'): ('Iniciar sesión')}
             </Button>
           </form>
           <div className="mv4">
             ¿No tenés cuenta? <Link to="/register">Registrate</Link>
           </div>
           <div>
-            <small>Al hacer click en Iniciar Sesión, aceptas los Términos y condiciones y la Política de Printit.</small>
+            <small className="text-muted">Al hacer click en Iniciar Sesión, aceptas los Términos y condiciones y la Política de Printit.</small>
           </div>
         </LoginCard>
       </Container>

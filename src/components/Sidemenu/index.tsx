@@ -17,7 +17,7 @@ const Sidemenu: React.FC<Props> = ({ toggleTheme }) => {
     return (
         <Container>
             <Link to="/">
-                <img src="https://printit.com.py/img/logo.svg" className="brand-mini"/>
+                <img src="https://printit.com.py/img/logo.svg" className="brand-mini" alt="Printit"/>
             </Link>
             <div className="link-menu">
                 <Link to="/" style={{ textDecoration: 'none', }}>Tablero</Link>

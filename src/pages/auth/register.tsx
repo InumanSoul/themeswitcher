@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import usePersistedState from "../../utils/usePersistedState";
 // Themes
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 // GlobalStyle and header
-import GlobablStyle, { Button, FormGroup } from "../../styles/global";
+import GlobablStyle, { Button, FormGroup, Input, Label } from "../../styles/global";
 import Header from "../../components/Header";
-import { Container, InputLabel, CustomInput, LoginCard } from "./styles";
+import { Container, LoginCard } from "./styles";
 
 const Register = () => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
@@ -67,11 +67,14 @@ const Register = () => {
       <Header toggleTheme={toggleTheme} />
       <Container>
         <LoginCard>
-          <h3>Register</h3>
-          <form>
+          <div className="mb4">
+            <h3>Crea tu cuenta</h3>
+            <p>Registrate gratis con tu correo</p>
+          </div>
+          <form className="mb4">
             <FormGroup>
-              <InputLabel htmlFor="name">Name</InputLabel>
-              <CustomInput
+              <Label htmlFor="name">Nombre</Label>
+              <Input
                 id="name"
                 type="name"
                 onChange={(e) => setUsername(e.target.value)}
@@ -79,8 +82,8 @@ const Register = () => {
               />
             </FormGroup>
             <FormGroup>
-              <InputLabel htmlFor="email">Email</InputLabel>
-              <CustomInput
+              <Label htmlFor="email">Email</Label>
+              <Input
                 id="email"
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -88,18 +91,24 @@ const Register = () => {
               />
             </FormGroup>
             <FormGroup>
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <CustomInput
+              <Label htmlFor="password">Contraseña</Label>
+              <Input
                 id="password"
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyPress={(e) => handleKeyPress(e)}
               />
             </FormGroup>
-            <Button onClick={e => {e.preventDefault(); handleLogin()}} disabled={isButtonDisabled}>
-              Register
+            <Button onClick={e => {e.preventDefault(); handleLogin()}} disabled={isButtonDisabled} className="btn-block">
+              Crear cuenta
             </Button>
           </form>
+          <div className="mv4">
+            ¿Tenés cuenta? <Link to="/login">Inicia sesión</Link>
+          </div>
+          <div>
+            <small className="text-muted">Al hacer click en Crear cuenta, aceptas los Términos y condiciones y la Política de Printit.</small>
+          </div>
         </LoginCard>
       </Container>
     </ThemeProvider>
