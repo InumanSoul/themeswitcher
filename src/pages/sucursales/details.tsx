@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import usePersistedState from "../../utils/usePersistedState";
 import Middleware from "../../components/Middleware/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/pro-regular-svg-icons";
 
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
@@ -20,7 +22,6 @@ function SucursalesDetail(props: any) {
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
   };
-
   const sucId = props.match.params;
   const [apidata, setApidata] = useState<JsonObject>({ data: [] });
   const [isLoading, setIsLoading] = useState(false);
@@ -59,6 +60,7 @@ function SucursalesDetail(props: any) {
                 <div>Loading...</div>
               ) : (
                   <div className="mt4">
+                    <Link to="/sucursales" className="text-decoration-none"><FontAwesomeIcon icon={faChevronLeft} /> Volver</Link>
                     <h2>{apidata.data.nombre}</h2>
                     <p>{apidata.data.direccion}</p>
                   </div>
@@ -68,7 +70,7 @@ function SucursalesDetail(props: any) {
         </div>
       </div>
     </ThemeProvider>
-
   );
 }
+
 export default SucursalesDetail;
