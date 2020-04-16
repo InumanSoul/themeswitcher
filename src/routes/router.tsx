@@ -9,6 +9,7 @@ import Register from "../pages/auth/register";
 import Account from "../pages/account";
 import Sucursales from "../pages/sucursales";
 import SucursalesDetail from "../pages/sucursales/details";
+import SucursalesCreate from "../pages/sucursales/create";
 
 const Routes = (
   <Router>
@@ -18,6 +19,7 @@ const Routes = (
     <Route path="/account" component={Account} />
     <Route exact path="/sucursales" component={Sucursales} />
     <Route path="/sucursales/show/:id" component={SucursalesDetail} />
+    <Route path="/sucursales/create" component={SucursalesCreate} />
   </Router>
 );
 

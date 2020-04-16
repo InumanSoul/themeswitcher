@@ -59,6 +59,8 @@ function Sucursales() {
           <Container>
             <h2>Sucursales</h2>
             <p>Estas son tus sucursales</p>
+            
+            <Link to="/sucursales/create">Nueva sucursal</Link>
 
             <div>
               {isLoading ? (
