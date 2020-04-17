@@ -11,6 +11,6 @@ export default {
 		text: '#F5F5F5',
 		cardbg: '#1C1E2A',
 		borderColor: '#222222',
-		shadows: '#000',
+		shadows: '#00000063',
 	},
 };

@@ -12,7 +12,7 @@ interface Props {
 
 const Sidemenu: React.FC<Props> = ({ toggleTheme }) => {
     const { colors, title } = useContext(ThemeContext);
-    const user = JSON.parse(localStorage.getItem('user') || "{}");
+    const user = JSON.parse(localStorage.getItem('user') || "{}")
 
     return (
         <Container>
@@ -20,13 +20,13 @@ const Sidemenu: React.FC<Props> = ({ toggleTheme }) => {
                 <img src="https://printit.com.py/img/logo.svg" className="brand-mini" alt="Printit"/>
             </Link>
             <div className="link-menu">
-                <Link to="/" style={{ textDecoration: 'none', }}>Tablero</Link>
                 <Link to="/sucursales" style={{ textDecoration: 'none', }}>Ingresos</Link>
                 <Link to="/sucursales" style={{ textDecoration: 'none', }}>Gastos</Link>
                 <Link to="/sucursales" style={{ textDecoration: 'none', }}>Contactos</Link>
-                <Link to="/sucursales" style={{ textDecoration: 'none', }}>Reportes</Link>
-                <Link to="/sucursales" style={{ textDecoration: 'none', }}>Inventario</Link>
-                <Link to="/sucursales" style={{ textDecoration: 'none', }}>Configuracion</Link>
+                <Link to="/items" style={{ textDecoration: 'none', }}>Productos</Link>
+                <Link to="/reports" style={{ textDecoration: 'none', }}>Reportes</Link>
+                <Link to="/outbuilding" style={{ textDecoration: 'none', }}>Dependencias</Link>
+                <Link to="/settings" style={{ textDecoration: 'none', }}>Configuracion</Link>
                 <Link to="/sucursales" style={{ textDecoration: 'none', }}>Sucursales</Link>
             </div>
             <Switch

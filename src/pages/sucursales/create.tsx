@@ -1,24 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import usePersistedState from "../../utils/usePersistedState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch, faChevronLeft } from "@fortawesome/pro-regular-svg-icons";
-
-import Middleware from "../../components/Middleware/auth";
-
-import light from "../../styles/themes/light";
-import dark from "../../styles/themes/dark";
-
-import GlobablStyle, { Container, Button, FormGroup, Label, Input } from "../../styles/global";
-import Sidemenu from "../../components/Sidemenu";
+import { Container, Button, FormGroup, Label, Input } from "../../styles/global";
+import Layout from "../../components/Layout";
 
 function SucursalesCreate() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-  const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
-  };
   const [nombre, setNombre] = useState("");
   const [direccion, setDireccion] = useState("");
   const [expedicion, setExpedicion] = useState("");
@@ -75,68 +63,61 @@ function SucursalesCreate() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobablStyle />
-      <Middleware />
-      <div className="wrapper">
-        <Sidemenu toggleTheme={toggleTheme} />
-        <div className="content">
-          <Container>
-            <Link to="/sucursales" className="text-decoration-none">
-              <FontAwesomeIcon icon={faChevronLeft} /> Volver
-            </Link>
+    <Layout>
+      <Container>
+        <Link to="/sucursales" className="text-decoration-none">
+          <FontAwesomeIcon icon={faChevronLeft} /> Volver
+        </Link>
 
-            <h2>Nueva sucursal</h2>
+        <h2>Nueva sucursal</h2>
 
-            <div>
-              <form className="mb4">
-                <FormGroup>
-                  <Label htmlFor="nombre">Nombre</Label>
-                  <Input
-                    id="nombre"
-                    type="text"
-                    onChange={(e) => setNombre(e.target.value)}
-                    onKeyPress={(e) => handleKeyPress(e)}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="direccion">Direccion</Label>
-                  <Input
-                    id="direccion"
-                    type="text"
-                    onChange={(e) => setDireccion(e.target.value)}
-                    onKeyPress={(e) => handleKeyPress(e)}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="expedicion">Punto de Expedicion</Label>
-                  <Input
-                    id="expedicion"
-                    type="expedicion"
-                    onChange={(e) => setExpedicion(e.target.value)}
-                    onKeyPress={(e) => handleKeyPress(e)}
-                  />
-                </FormGroup>
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleCreate();
-                  }}
-                  disabled={isButtonDisabled}
-                  className="btn-block"
-                >
-                  {isLoading ? (
-                    <FontAwesomeIcon icon={faCircleNotch} spin={true} />
-                  ) : (
-                    "Guardar sucursal"
-                  )}
-                </Button>
-              </form>
-            </div>
-          </Container>
+        <div>
+          <form className="mb4">
+            <FormGroup>
+              <Label htmlFor="nombre">Nombre</Label>
+              <Input
+                id="nombre"
+                type="text"
+                onChange={(e) => setNombre(e.target.value)}
+                onKeyPress={(e) => handleKeyPress(e)}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label htmlFor="direccion">Direccion</Label>
+              <Input
+                id="direccion"
+                type="text"
+                onChange={(e) => setDireccion(e.target.value)}
+                onKeyPress={(e) => handleKeyPress(e)}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label htmlFor="expedicion">Punto de Expedicion</Label>
+              <Input
+                id="expedicion"
+                type="expedicion"
+                onChange={(e) => setExpedicion(e.target.value)}
+                onKeyPress={(e) => handleKeyPress(e)}
+              />
+            </FormGroup>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                handleCreate();
+              }}
+              disabled={isButtonDisabled}
+              className="btn-block"
+            >
+              {isLoading ? (
+                <FontAwesomeIcon icon={faCircleNotch} spin={true} />
+              ) : (
+                "Guardar sucursal"
+              )}
+            </Button>
+          </form>
         </div>
-      </div>
-    </ThemeProvider>
+      </Container>
+    </Layout>
   );
 }
 export default SucursalesCreate;

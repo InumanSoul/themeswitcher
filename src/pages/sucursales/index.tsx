@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import usePersistedState from "../../utils/usePersistedState";
-import Middleware from "../../components/Middleware/auth";
-
-import light from "../../styles/themes/light";
-import dark from "../../styles/themes/dark";
-
-import GlobablStyle, { Container } from "../../styles/global";
-import Sidemenu from "../../components/Sidemenu";
+import { Container } from "../../styles/global";
+import Layout from "../../components/Layout";
 
 interface JsonObject {
   data: Array<any>;
 }
 
 function Sucursales() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-  const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
-  };
   const [apidata, setApidata] = useState<JsonObject>({ data: [] });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,38 +39,35 @@ function Sucursales() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobablStyle />
-      <Middleware />
-      <div className="wrapper">
-        <Sidemenu toggleTheme={toggleTheme} />
-        <div className="content">
-          <Container>
-            <h2>Sucursales</h2>
-            <p>Estas son tus sucursales</p>
-            
-            <Link to="/sucursales/create">Nueva sucursal</Link>
+    <Layout>
+      <Container>
+        <h2>Sucursales</h2>
+        <p>Estas son tus sucursales</p>
 
-            <div>
-              {isLoading ? (
-                <div>Loading...</div>
-              ) : (
-                <>
-                  {apidata.data.map((item) => {
-                    return (
-                      <Link to={`/sucursales/show/${item.id}`} key={item.id} className="d-block mt4 text-decoration-none text-reset bg-light shadow p4 rounded">
-                        <h4>{item.nombre}</h4>
-                        <p>{item.direccion}</p>
-                      </Link>
-                    );
-                  })}
-                </>
-              )}
-            </div>
-          </Container>
+        <Link to="/sucursales/create">Nueva sucursal</Link>
+
+        <div>
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <>
+              {apidata.data.map((item) => {
+                return (
+                  <Link
+                    to={`/sucursales/show/${item.id}`}
+                    key={item.id}
+                    className="d-block mt4 text-decoration-none text-reset bg-light shadow p4 rounded"
+                  >
+                    <h4>{item.nombre}</h4>
+                    <p>{item.direccion}</p>
+                  </Link>
+                );
+              })}
+            </>
+          )}
         </div>
-      </div>
-    </ThemeProvider>
+      </Container>
+    </Layout>
   );
 }
 export default Sucursales;

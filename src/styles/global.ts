@@ -150,7 +150,7 @@ export default createGlobalStyle`
     }
 
     .shadow{
-        box-shadow: 0 5px 10px ${(props) => props.theme.colors.shadows};
+        box-shadow: 0 4px 8px ${(props) => props.theme.colors.shadows};
     }
 
     .rounded {

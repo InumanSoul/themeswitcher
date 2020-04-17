@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import usePersistedState from "../../utils/usePersistedState";
-import Middleware from "../../components/Middleware/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/pro-regular-svg-icons";
 
-import light from "../../styles/themes/light";
-import dark from "../../styles/themes/dark";
-
-import GlobablStyle, { Container } from "../../styles/global";
-import Sidemenu from "../../components/Sidemenu";
+import { Container } from "../../styles/global";
+import Layout from "../../components/Layout";
 
 interface JsonObject {
   data: any;
 }
 
 function SucursalesDetail(props: any) {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-  const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
-  };
   const sucId = props.match.params;
   const [apidata, setApidata] = useState<JsonObject>({ data: [] });
   const [isLoading, setIsLoading] = useState(false);
@@ -48,28 +38,23 @@ function SucursalesDetail(props: any) {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobablStyle />
-      <Middleware />
-      <div className="wrapper">
-        <Sidemenu toggleTheme={toggleTheme} />
-        <div className="content">
-          <Container>
-            <div>
-              {isLoading ? (
-                <div>Loading...</div>
-              ) : (
-                  <div className="mt4">
-                    <Link to="/sucursales" className="text-decoration-none"><FontAwesomeIcon icon={faChevronLeft} /> Volver</Link>
-                    <h2>{apidata.data.nombre}</h2>
-                    <p>{apidata.data.direccion}</p>
-                  </div>
-                )}
+    <Layout>
+      <Container>
+        <div>
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <div className="mt4">
+              <Link to="/sucursales" className="text-decoration-none">
+                <FontAwesomeIcon icon={faChevronLeft} /> Volver
+              </Link>
+              <h2>{apidata.data.nombre}</h2>
+              <p>{apidata.data.direccion}</p>
             </div>
-          </Container>
+          )}
         </div>
-      </div>
-    </ThemeProvider>
+      </Container>
+    </Layout>
   );
 }
 
