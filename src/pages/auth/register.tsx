@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useHistory, Link } from "react-router-dom";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import usePersistedState from "../../utils/usePersistedState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/pro-regular-svg-icons";
-// Themes
-import light from "../../styles/themes/light";
-import dark from "../../styles/themes/dark";
-// GlobalStyle and header
-import GlobablStyle, { Button, FormGroup, Input, Label } from "../../styles/global";
-import Header from "../../components/Header";
+import { Button, FormGroup, Input, Label } from "../../styles/global";
 import { Container, LoginCard } from "./styles";
+import Layout from '../../components/Layout/public'
 
 const Register = () => {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-  // Theme toggler
-  const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
-  };
-
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -64,9 +52,7 @@ const Register = () => {
   };
   
   return (
-    <ThemeProvider theme={theme}>
-      <GlobablStyle />
-      <Header toggleTheme={toggleTheme} />
+    <Layout>
       <Container>
         <LoginCard>
           <div className="mb4">
@@ -101,22 +87,32 @@ const Register = () => {
                 onKeyPress={(e) => handleKeyPress(e)}
               />
             </FormGroup>
-            <Button 
-              onClick={e => {e.preventDefault(); handleLogin()}}
-              disabled={isButtonDisabled} 
+            <Button
+              onClick={(e) => {
+                e.preventDefault()
+                handleLogin()
+              }}
+              disabled={isButtonDisabled}
               className="btn-block"
             >
-              {isLoading ? (<FontAwesomeIcon icon={faCircleNotch} spin={true}/>) : "Crear cuenta"}
+              {isLoading ? (
+                <FontAwesomeIcon icon={faCircleNotch} spin={true} />
+              ) : (
+                'Crear cuenta'
+              )}
             </Button>
           </form>
           <div className="mv4">
             ¿Tenés cuenta? <Link to="/login">Inicia sesión</Link>
           </div>
-          <small className="text-muted">Al hacer click en Crear cuenta, aceptas los Términos y condiciones y la Política de Printit.</small>
+          <small className="text-muted">
+            Al hacer click en Crear cuenta, aceptas los Términos y condiciones y
+            la Política de Printit.
+          </small>
         </LoginCard>
       </Container>
-    </ThemeProvider>
-  );
+    </Layout>
+  )
 }
 
 export default Register;

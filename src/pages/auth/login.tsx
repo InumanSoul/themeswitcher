@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useHistory, Link } from "react-router-dom";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import usePersistedState from "../../utils/usePersistedState";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch } from "@fortawesome/pro-regular-svg-icons";
-// Themes
-import light from "../../styles/themes/light";
-import dark from "../../styles/themes/dark";
-// GlobalStyle and header
-import GlobablStyle, { Button, FormGroup, Label, Input } from "../../styles/global";
-import Header from "../../components/Header";
-import { Container, LoginCard } from "./styles";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleNotch } from '@fortawesome/pro-regular-svg-icons'
+import { Button, FormGroup, Label, Input } from '../../styles/global';
+import { Container, LoginCard } from './styles';
+import Layout from '../../components/Layout/public';
 
 const Login = () => {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-  // Theme toggler
-  const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
-  };
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isButtonDisabled, setIsBbuttonDisabled] = useState(true);
@@ -64,9 +52,7 @@ const Login = () => {
   };
   
   return (
-    <ThemeProvider theme={theme}>
-      <GlobablStyle />
-      <Header toggleTheme={toggleTheme} />
+    <Layout>
       <Container>
         <LoginCard>
           <div className="mb4">
@@ -95,11 +81,18 @@ const Login = () => {
               />
             </FormGroup>
             <Button
-              onClick={(e) => {e.preventDefault(); handleLogin();}}
+              onClick={(e) => {
+                e.preventDefault()
+                handleLogin()
+              }}
               disabled={isButtonDisabled}
               className="btn-block"
             >
-              {isLoading ? (<FontAwesomeIcon icon={faCircleNotch} spin={true}/>) : "Iniciar sesión"}
+              {isLoading ? (
+                <FontAwesomeIcon icon={faCircleNotch} spin={true} />
+              ) : (
+                'Iniciar sesión'
+              )}
             </Button>
           </form>
           <div className="mv4">
@@ -111,8 +104,8 @@ const Login = () => {
           </small>
         </LoginCard>
       </Container>
-    </ThemeProvider>
-  );
+    </Layout>
+  )
 }
 
 export default Login;

@@ -6,8 +6,9 @@ import Middleware from '../../components/Middleware/auth';
 import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 
-import GlobablStyle from "../../styles/global";
+import GlobablStyle, { Wrapper, Content } from "../../styles/global";
 import Sidemenu from "../../components/Sidemenu";
+import Header from "../../components/Header/app"
 
 type Props = {
   /** standard children prop: accepts any valid React Node */
@@ -24,12 +25,13 @@ const Layout: React.FC<Props> = ({ children }) => {
     <ThemeProvider theme={theme}>
       <GlobablStyle />
       <Middleware />
-      <div className="wrapper">
-        <Sidemenu toggleTheme={toggleTheme} />
-        <div className="content">
+      <Wrapper>
+        <Sidemenu/>
+        <Content>
+          <Header toggleTheme={toggleTheme} />
           {children}
-        </div>
-      </div>
+        </Content>
+      </Wrapper>
     </ThemeProvider>
   );
 }

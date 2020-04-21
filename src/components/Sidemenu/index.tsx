@@ -1,52 +1,66 @@
-import React, { useContext } from 'react';
-import Switch from 'react-switch';
-import { ThemeContext } from 'styled-components';
-import { shade } from 'polished';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Dropdown, DropdownHeader, DropupMenu } from '../../styles/global';
+import { Container, SwitchEmpresa, MenuLink } from './styles';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBuilding, faAddressBook, faBox, faFileChartLine, faInboxIn, faInboxOut } from "@fortawesome/pro-regular-svg-icons";
 
-import { Container } from './styles';
-
-interface Props {
-    toggleTheme(): void;
-}
-
-const Sidemenu: React.FC<Props> = ({ toggleTheme }) => {
-    const { colors, title } = useContext(ThemeContext);
-    const user = JSON.parse(localStorage.getItem('user') || "{}")
+function Sidemenu() {
+    const user = JSON.parse(localStorage.getItem('user') || "{}");
 
     return (
-        <Container>
-            <Link to="/">
-                <img src="https://printit.com.py/img/logo.svg" className="brand-mini" alt="Printit"/>
-            </Link>
-            <div className="link-menu">
-                <Link to="/sucursales" style={{ textDecoration: 'none', }}>Ingresos</Link>
-                <Link to="/sucursales" style={{ textDecoration: 'none', }}>Gastos</Link>
-                <Link to="/sucursales" style={{ textDecoration: 'none', }}>Contactos</Link>
-                <Link to="/items" style={{ textDecoration: 'none', }}>Productos</Link>
-                <Link to="/reports" style={{ textDecoration: 'none', }}>Reportes</Link>
-                <Link to="/outbuilding" style={{ textDecoration: 'none', }}>Dependencias</Link>
-                <Link to="/settings" style={{ textDecoration: 'none', }}>Configuracion</Link>
-                <Link to="/sucursales" style={{ textDecoration: 'none', }}>Sucursales</Link>
-            </div>
-            <Switch
-                onChange={toggleTheme}
-                checked={title === 'dark'}
-                checkedIcon={false}
-                uncheckedIcon={false}
-                height={10}
-                width={35}
-                handleDiameter={20}
-                offColor={shade(0.2, colors.primary)}
-                onColor={colors.secondary}
-            />
-            <div className="switch-empresa">
-                <small className="text-bold">Empresa</small>
-                <Link to="/account" style={{ textDecoration: 'none', }}>{user.name}</Link>
-            </div>
+      <Container>
+        <Link to="/">
+          <img
+            src="https://printit.com.py/img/logo.svg"
+            className="brand-mini"
+            alt="Printit"
+          />
+        </Link>
+        <MenuLink>
+          <Link to="/sucursales">
+            <FontAwesomeIcon icon={faInboxIn} />
+            Ingresos
+          </Link>
+          <Link to="/sucursales">
+            <FontAwesomeIcon icon={faInboxOut} />
+            Gastos
+          </Link>
+          <Link to="/items">
+            <FontAwesomeIcon icon={faBox} />
+            Productos
+          </Link>
+          <Link to="/sucursales">
+            <FontAwesomeIcon icon={faAddressBook} />
+            Contactos
+          </Link>
+          <Link to="/reports">
+            <FontAwesomeIcon icon={faFileChartLine} />
+            Reportes
+          </Link>
+          <Link to="/outbuilding">Dependencias</Link>
+          <Link to="/settings">Ajustes</Link>
+        </MenuLink>
 
-        </Container>
-    );
+        <Dropdown>
+          <SwitchEmpresa>
+            <DropdownHeader className="d-flex align-items-center justify-content-between">
+              <div>
+                <small className="text-bold">Empresa</small>
+                <p>{user.name}</p>
+              </div>
+              <div>
+                <FontAwesomeIcon icon={faBuilding} />
+              </div>
+            </DropdownHeader>
+            <DropupMenu>
+              <Link to="/business" className="dropdown-item">Mi empresa</Link>
+              <Link to="/business" className="dropdown-item">Nueva empresa</Link>
+            </DropupMenu>
+          </SwitchEmpresa>
+        </Dropdown>
+      </Container>
+    )
 };
 
 export default Sidemenu;

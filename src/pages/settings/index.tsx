@@ -6,7 +6,7 @@ function Settings() {
     return (
       <Layout>
         <Container>
-          <h2>Configuraciones</h2>
+          <h2>Ajustes</h2>
           <p>Lorem ipsum dolor sit ammet consecteur</p>
         </Container>
       </Layout>

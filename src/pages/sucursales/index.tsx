@@ -46,7 +46,7 @@ function Sucursales() {
 
         <Link to="/sucursales/create">Nueva sucursal</Link>
 
-        <div>
+        <div className="row">
           {isLoading ? (
             <div>Loading...</div>
           ) : (
@@ -56,12 +56,14 @@ function Sucursales() {
                   <Link
                     to={`/sucursales/show/${item.id}`}
                     key={item.id}
-                    className="d-block mt4 text-decoration-none text-reset bg-light shadow p4 rounded"
+                    className="col-md-4 mt4 text-decoration-none text-reset"
                   >
-                    <h4>{item.nombre}</h4>
-                    <p>{item.direccion}</p>
+                    <div className="box bg-light shadow p4 rounded">
+                      <h4>{item.nombre}</h4>
+                      <p>{item.direccion}</p>
+                    </div>
                   </Link>
-                );
+                )
               })}
             </>
           )}

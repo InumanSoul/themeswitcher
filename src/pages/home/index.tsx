@@ -6,20 +6,16 @@ import light from "../../styles/themes/light";
 import dark from "../../styles/themes/dark";
 
 import GlobablStyle from "../../styles/global";
-import Header from "../../components/Header";
+import Header from "../../components/Header/public";
 import { Container } from "./styles";
 
 function Home() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
 
-  const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <GlobablStyle />
-      <Header toggleTheme={toggleTheme} />
+      <Header />
       <Container>
         <h2>Home Page</h2>
         <p>Lorem ipsum dolor sit ammet consecteur</p>
