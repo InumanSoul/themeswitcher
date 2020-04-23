@@ -5,8 +5,12 @@ export const Container = styled.div`
   background: ${props => props.theme.colors.background};
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0 30px;
+
+  @media (min-width: 768px){
+    justify-content: space-between;
+  }
 `;
 
 export const Brand = styled.div`
@@ -40,8 +44,12 @@ export const SearchBox = styled.div`
   border-radius: 1.2rem;
   background: ${(props) => props.theme.colors.cardbg};
   padding-left: 0.75rem;
-  display: flex;
+  display: none;
   align-items: center;
+  
+  @media (min-width: 768px){
+    display: flex;
+  }
 `;
 
 export const InputSearch = styled.input`

@@ -23,7 +23,7 @@ function MenuLogin() {
 
 function UserMenu(props: any){
 	return(
-		<Link to="/sucursales" className="text-decoration-none text-reset ml3">{props.name}</Link>
+		<Link to="/account" className="text-decoration-none text-reset ml3">{props.name}</Link>
 	);
 };
 
