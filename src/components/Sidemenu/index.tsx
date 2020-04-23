@@ -18,11 +18,11 @@ function Sidemenu() {
           />
         </Link>
         <MenuLink>
-          <Link to="/sucursales">
+          <Link to="/invoices">
             <FontAwesomeIcon icon={faInboxIn} />
             Ingresos
           </Link>
-          <Link to="/sucursales">
+          <Link to="/expenses">
             <FontAwesomeIcon icon={faInboxOut} />
             Gastos
           </Link>
@@ -30,7 +30,7 @@ function Sidemenu() {
             <FontAwesomeIcon icon={faBox} />
             Productos
           </Link>
-          <Link to="/sucursales">
+          <Link to="/contacts">
             <FontAwesomeIcon icon={faAddressBook} />
             Contactos
           </Link>
@@ -47,7 +47,7 @@ function Sidemenu() {
             <DropdownHeader className="d-flex align-items-center justify-content-between">
               <div>
                 <small className="text-bold">Empresa</small>
-                <p>{user.name}</p>
+                <p>{user.empresa.nombre}</p>
               </div>
               <div>
                 <FontAwesomeIcon icon={faBuilding} />

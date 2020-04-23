@@ -16,14 +16,16 @@ const Layout: React.FC<Props> = ({ children }) => {
 	const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light)
 	
 	useEffect(() => {
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme(dark);
-    } else {
+    const localTheme = JSON.parse(localStorage.getItem('theme') || "{}");
+    if(localTheme.title === 'light'){
 			setTheme(light);
-		}
-		const localTheme = JSON.parse(localStorage.getItem('theme') || "{}");
-		console.log(localTheme);
-		console.log(light)
+    } else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme(dark);
+      } else {
+        setTheme(light);
+      }
+    }
 		// window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localTheme ? setTheme(dark) : localTheme ? setTheme(localTheme) : setTheme(dark);
 	})
 
