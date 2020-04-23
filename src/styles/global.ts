@@ -424,10 +424,6 @@ export default createGlobalStyle`
 	}
 
 	@media only screen and (min-width: 48em) {
-		.container {
-			width: 46rem;
-		}
-
 		.col-sm,
 		.col-sm-1,
 		.col-sm-2,
@@ -1100,10 +1096,15 @@ export const FormGroup = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 90%;
-  padding: 40px 15px;
+  width: 100%;
+  padding: 30px 15px 65px 15px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (min-width: 768px){
+	width: 90%;
+  	padding: 30px 15px;
+  }
 `;
 
 export const Input = styled.input`
@@ -1217,4 +1218,15 @@ export const Dropdown = styled.div`
 
 export const DropdownHeader = styled.div`
   color: ${(props) => props.theme.colors.text};
+`;
+
+export const Badge = styled.div`
+	padding: .2rem .5rem;
+	border-radius: 1rem;
+	display: inline-block;
+	text-align: center;
+	color: ${(props) => props.theme.colors.text};
+	font-size: 75%;
+	font-weight: 600;
+	border: 2px solid ${(props) => props.theme.colors.secondary};
 `;
