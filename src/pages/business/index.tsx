@@ -9,7 +9,8 @@ function Business() {
         <Container>
           <h2>Empresa</h2>
           <p>Lorem ipsum dolor sit ammet consecteur</p>
-          <Link to="/sucursales">Ver sucursales</Link>
+          <Link to="/offices">Sucursales</Link>
+          <Link to="/offices">Depositos</Link>
         </Container>
       </Layout>
     );

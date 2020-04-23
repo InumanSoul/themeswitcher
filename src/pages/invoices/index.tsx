@@ -6,7 +6,7 @@ function Invoices() {
     return(
       <Layout>
         <Container>
-          <h2>Ventas</h2>
+          <h2>Facturas</h2>
           <p>Lorem ipsum dolor sit ammet consecteur</p>
         </Container>
       </Layout>

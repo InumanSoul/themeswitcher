@@ -10,6 +10,7 @@ function Account() {
       <Container>
         <h2>Hola {user.name}!</h2>
         <p>Lorem ipsum dolor sit ammet consecteur</p>
+        <Button>Editar</Button>
       </Container>
     </Layout>
   );

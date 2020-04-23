@@ -31,11 +31,11 @@ const Login = () => {
     
     if (username !== null && password !== null) {
       axios
-        .post("http://127.0.0.1:8000/api/login", formData)
+        .post("http://192.168.0.4:8000/api/login", formData)
         .then((res) => {
           localStorage.setItem("app_token", res.data.success.token);
           localStorage.setItem("user", JSON.stringify(res.data.user));
-          history.push("/sucursales");
+          history.push("/account");
         })
         .catch((error) => {
           console.log(error);

@@ -10,13 +10,15 @@ import Account from "../pages/account";
 import Items from "../pages/items";
 import Reports from "../pages/reports";
 import Invoices from "../pages/invoices";
+import Expenses from '../pages/expenses';
 import Business from "../pages/business";
 import Outbuilding from "../pages/outbuilding";
 import Settings from "../pages/settings";
+import Contacts from '../pages/contacts';
 
-import Sucursales from "../pages/sucursales";
-import SucursalesDetail from "../pages/sucursales/details";
-import SucursalesCreate from "../pages/sucursales/create";
+import Offices from "../pages/offices";
+import OfficeDetail from "../pages/offices/details";
+import OfficeCreate from "../pages/offices/create";
 
 function Routes(){
   return (
@@ -26,16 +28,18 @@ function Routes(){
       <Route path="/register" component={Register} />
       <Route path="/account" component={Account} />
       <Route exact path="/invoices" component={Invoices} />
+      <Route exact path="/expenses" component={Expenses} />
       <Route exact path="/reports" component={Reports} />
       <Route exact path="/items" component={Items} />
       <Route exact path="/business" component={Business} />
       <Route exact path="/settings" component={Settings} />
       <Route exact path="/outbuilding" component={Outbuilding} />
-      <Route exact path="/sucursales" component={Sucursales} />
-      <Route path="/sucursales/show/:id" component={SucursalesDetail} />
-      <Route path="/sucursales/create" component={SucursalesCreate} />
+      <Route exact path="/contacts" component={Contacts} />
+      <Route exact path="/offices" component={Offices} />
+      <Route path="/offices/show/:id" component={OfficeDetail} />
+      <Route path="/offices/new" component={OfficeCreate} />
     </Router>
-  );
+  )
 };
 
 export default Routes;
