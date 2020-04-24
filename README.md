@@ -1,3 +1,6 @@
+## Intro
+This project has a migration from laravel to full react project and separates the API in other project to easily build many clients as you want, the API project for data provide is open too.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
