@@ -14,7 +14,7 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     width: 210px;
     height: 100vh;
-    position: sticky;
+    position: fixed;
     top: 0;
     box-shadow: none;
     flex-direction: column;
@@ -24,7 +24,7 @@ export const Container = styled.div`
   @media (min-width: 1200px) {
     width: 210px;
     height: 100vh;
-    position: sticky;
+    position: fixed;
     top: 0;
     flex-direction: column;
   }

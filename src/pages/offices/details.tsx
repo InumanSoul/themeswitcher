@@ -44,7 +44,7 @@ function OfficeDetail(props: any) {
             <div>Loading...</div>
           ) : (
             <div className="mt4">
-              <Link to="/sucursales" className="text-decoration-none">
+              <Link to="/offices" className="text-decoration-none">
                 <FontAwesomeIcon icon={faChevronLeft} /> Volver
               </Link>
               <h2>{apidata.data.nombre}</h2>

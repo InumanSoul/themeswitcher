@@ -1069,6 +1069,7 @@ export const Content = styled.div`
 
 	@media (min-width: 768px) {
 		width: calc(100% - 210px);
+		margin-left: 210px;
 	}
 `;
 
