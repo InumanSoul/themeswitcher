@@ -4,13 +4,14 @@ import { Link, useHistory } from 'react-router-dom';
 import Switch from 'react-switch';
 import { ThemeContext } from 'styled-components';
 import { shade } from 'polished';
-import { Container, Profile, InputSearch, SearchBox } from './styles';
+import { Container, InputSearch, SearchBox } from './styles';
 import {
   SuccessButton,
   Dropdown,
   DropdownHeader,
   DropdownMenuRight,
 } from "../../styles/global";
+import Avatar from 'react-avatar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/pro-regular-svg-icons";
 
@@ -68,9 +69,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
 
         <Dropdown>
           <DropdownHeader>
-            <Profile className="ml2">
-              <img src="https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg" alt="Profile"/>
-            </Profile>
+            <Avatar name={user.name} size="35" round={true} textSizeRatio={2} className="ml2"/>
           </DropdownHeader>
           <DropdownMenuRight>
             <Link to="/account" className="dropdown-item">{user.name}</Link>
