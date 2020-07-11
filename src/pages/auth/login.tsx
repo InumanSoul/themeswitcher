@@ -31,7 +31,7 @@ const Login = () => {
     
     if (username !== null && password !== null) {
       axios
-        .post("http://192.168.0.4:8000/api/login", formData)
+        .post("http://localhost:8000/api/login", formData)
         .then((res) => {
           localStorage.setItem("app_token", res.data.success.token);
           localStorage.setItem("user", JSON.stringify(res.data.user));

@@ -27,7 +27,7 @@ function Offices() {
 
         const result = await axios
         .get(
-            "http://192.168.0.4:8000/api/sucursales", {
+            "http://localhost:8000/api/sucursales", {
                 headers: headers,
             });
 
@@ -43,7 +43,7 @@ function Offices() {
         <h2>Sucursales</h2>
         <p>Estas son tus sucursales</p>
 
-        <Link to="/sucursales/create">Nueva sucursal</Link>
+        <Link to="/offices/create">Nueva sucursal</Link>
 
         <div className="row">
           {isLoading ? (

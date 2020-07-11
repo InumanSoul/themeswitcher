@@ -32,7 +32,7 @@ const Register = () => {
     
     if (username !== null && email !== null && password !== null) {
       axios
-        .post("http://127.0.0.1:8000/api/register", formData)
+        .post("http://localhost:8000/api/register", formData)
         .then((res) => {
           history.push("/login");
           console.log(res);

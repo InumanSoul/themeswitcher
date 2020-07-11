@@ -32,7 +32,7 @@ function Items() {
 
         const result = await axios
         .get(
-            "http://192.168.0.4:8000/api/items", {
+            "http://localhost:8000/api/items", {
                 headers: headers,
             });
 
@@ -78,7 +78,6 @@ function Items() {
                         />
                         <div>
                           <p>En stock: 86</p>
-                          <p>Proveedor: Ejemplo S.A.</p>
                         </div>
                         <div>
                           <Badge>
