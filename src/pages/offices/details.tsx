@@ -26,7 +26,7 @@ function OfficeDetail(props: any) {
     const fetchData = async () => {
       setIsLoading(true);
 
-      const result = await axios.get("http://192.168.0.4:8000/api/sucursales/"+sucId.id, {
+      const result = await axios.get("http://localhost:8000/api/sucursales/"+sucId.id, {
         headers: headers,
       });
       const formatResult = { data: result.data };

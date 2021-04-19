@@ -45,10 +45,14 @@ function Items() {
   return (
     <Layout>
       <Container>
-        <h2>Productos</h2>
-        <p>Tus productos son</p>
-
-        <Link to="/items">Nuevo producto</Link>
+        <div className="row">
+          <div className="col-md-6">
+            <h2>Productos</h2>
+          </div>
+          <div className="col-md-6">
+            <Link to="/items" className="link-button--primary">Nuevo producto</Link>
+          </div>
+        </div>
 
         <div className="row">
           {isLoading ? (
@@ -62,7 +66,7 @@ function Items() {
                     key={item.id}
                     className="col-xs-6 col-md-4 mt4 text-decoration-none text-reset"
                   >
-                    <div className="box bg-light shadow rounded">
+                    <div className="box bg-light bordered rounded">
                       <ProductPhoto>
                         <FontAwesomeIcon icon={faImagePolaroid} size={'2x'}/>
                       </ProductPhoto>

@@ -37,7 +37,8 @@ export default createGlobalStyle`
 	}
 
 	a{
-			color: ${(props) => props.theme.colors.primary};
+		color: ${(props) => props.theme.colors.primary};
+		text-decoration: none;
 	}
 
 	/* Body */
@@ -58,6 +59,9 @@ export default createGlobalStyle`
 	}
 
 	/* Helpers */
+	.bordered{
+		border: 1px solid ${(props) => props.theme.colors.borderColor};
+	}
 	.bg-light {
 			background: ${(props) => props.theme.colors.cardbg};
 	}
@@ -1077,7 +1081,7 @@ export const Button = styled.button`
   padding: 0.375rem 0.75rem;
   background: ${(props) => props.theme.colors.primary};
   color: white;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 0.25rem;
   font-size: 1rem;
   font-weight: 500;
@@ -1229,5 +1233,5 @@ export const Badge = styled.div`
 	color: ${(props) => props.theme.colors.text};
 	font-size: 75%;
 	font-weight: 600;
-	border: 2px solid ${(props) => props.theme.colors.secondary};
+	border: 1px solid ${(props) => props.theme.colors.secondary};
 `;

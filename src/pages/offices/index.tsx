@@ -40,10 +40,14 @@ function Offices() {
   return (
     <Layout>
       <Container>
-        <h2>Sucursales</h2>
-        <p>Estas son tus sucursales</p>
-
-        <Link to="/offices/create">Nueva sucursal</Link>
+        <div className="row">
+          <div className="col-md-6">
+            <h2>Sucursales</h2>  
+          </div>
+          <div className="col-md-6">
+            <Link to="/offices/new" className="link-button--primary">Nueva sucursal</Link>
+          </div>
+        </div>
 
         <div className="row">
           {isLoading ? (
@@ -57,7 +61,7 @@ function Offices() {
                     key={item.id}
                     className="col-md-4 mt4 text-decoration-none text-reset"
                   >
-                    <div className="box bg-light shadow p4 rounded">
+                    <div className="box bg-light p4 rounded bordered">
                       <h4>{item.nombre}</h4>
                       <p>{item.direccion}</p>
                     </div>

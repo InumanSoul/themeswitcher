@@ -40,7 +40,7 @@ function OfficeCreate() {
 
     if (nombre !== null && direccion !== null && expedicion !== null) {
       axios
-        .post("http://192.168.0.4:8000/api/sucursales", formData, {
+        .post("http://localhost:8000/api/sucursales", formData, {
           headers: headers,
         })
         .then((res) => {
@@ -65,14 +65,13 @@ function OfficeCreate() {
   return (
     <Layout>
       <Container>
-        <Link to="/sucursales" className="text-decoration-none">
+        <Link to="/offices" className="text-decoration-none">
           <FontAwesomeIcon icon={faChevronLeft} /> Volver
         </Link>
 
-        <h2>Nueva sucursal</h2>
-
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-5 col-md-offset-3">
+            <h2>Nueva sucursal</h2>
             <form className="mb4">
               <FormGroup>
                 <Label htmlFor="nombre">Nombre</Label>
@@ -84,7 +83,7 @@ function OfficeCreate() {
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="direccion">Direccion</Label>
+                <Label htmlFor="direccion">Dirección</Label>
                 <Input
                   id="direccion"
                   type="text"
@@ -93,7 +92,7 @@ function OfficeCreate() {
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="expedicion">Punto de Expedicion</Label>
+                <Label htmlFor="expedicion">Punto de Expedición</Label>
                 <Input
                   id="expedicion"
                   type="expedicion"
@@ -107,12 +106,11 @@ function OfficeCreate() {
                   handleCreate()
                 }}
                 disabled={isButtonDisabled}
-                className="btn-block"
               >
                 {isLoading ? (
                   <FontAwesomeIcon icon={faCircleNotch} spin={true} />
                 ) : (
-                  'Guardar sucursal'
+                  'Registrar sucursal'
                 )}
               </Button>
             </form>
