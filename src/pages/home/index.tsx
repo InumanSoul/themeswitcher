@@ -4,21 +4,18 @@ import usePersistedState from "../../utils/usePersistedState";
 
 import light from "../../styles/themes/light";
 
-import GlobablStyle from "../../styles/global";
+import GlobalStyle from "../../styles/global";
 import Header from "../../components/Header/public";
-import { Container } from "./styles";
+import Landing from "./landing";
 
 function Home() {
   const [theme] = usePersistedState<DefaultTheme>("theme", light);
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobablStyle />
+      <GlobalStyle />
       <Header />
-      <Container>
-        <h2>Home Page</h2>
-        <p>Lorem ipsum dolor sit ammet consecteur</p>
-      </Container>
+      <Landing />
     </ThemeProvider>
   );
 }

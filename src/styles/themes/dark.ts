@@ -9,6 +9,7 @@ export default {
     sidemenu: '#1C1E2A',
 
     background: '#151722',
+    darkBackground: '#151722',
     text: '#F5F5F5',
     textInvert: '#151722',
     cardbg: '#1C1E2A',

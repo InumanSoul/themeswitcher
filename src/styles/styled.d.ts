@@ -12,6 +12,7 @@ declare module 'styled-components' {
         sidemenu: string
 
         background: string
+        darkBackground: string
         text: string
         textInvert: string
         cardbg: string

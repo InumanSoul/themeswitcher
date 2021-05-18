@@ -7,6 +7,11 @@ function Header() {
 	return(
 		<Container>
 			<img className="brand-md" src="https://printit.com.py/img/vendor/logo.svg" alt="Printit" />
+			<div>
+				<Link to="/account" className="text-decoration-none text-reset mr3">Módulos</Link>
+				<Link to="/account" className="text-decoration-none text-reset mr3">Precios</Link>
+				<Link to="/account" className="text-decoration-none text-reset mr3">Ayuda</Link>
+			</div>
 			<Menu />
 		</Container>
 	);
